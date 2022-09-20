@@ -1,96 +1,11 @@
-<div class="container-fluid card">
-  <div class="card-body">
-    <div class="row d-flex justify-content-between col-md-12 col-md-6 col-md-4">
-      <div class=" col-md-6">
-        <h4>MasterProduct</h4>
-      </div>
-      <div class=" col-md-6" style="text-align: end;">
-        <button class="btn btn-light"
-                routerLink="/Create">
-          <h6>+ Create Master Product</h6>
-        </button>
-      </div>
-    </div>
-</div>
-
-  <div class="row g-3 align-items-center justify-content-start">
-    <div class="col-4 col-md-3 col-lg-3 col-xl-3">
-      <ng-select
-        [items]="status"
-        class="col-12"
-        bindLabel="label"
-        bindValue="id"
-        placeholder="All status">
-      </ng-select>
-    </div>
-    <div class="col-8 col-md-3 col-lg-3 col-xl-3" style="">
-      <ng-select
-        [items]="productsTypeList"
-        class="no-validation-icon no-success-validation"
-        bindLabel="name"
-        bindValue="id"
-        placeholder="All product type"
-        autocomplete="off">
-      </ng-select>
-    </div>
-    <div class="col-12 col-md-4 col-lg-4 col-xl-5">
-      <input type="text"
-             class="form-control no-validation-icon no-success-validation"
-             id="term"
-             autocomplete="off"
-             placeholder="Searching...">
-    </div>
-    <div class="col-auto col-md-2 col-lg-2 col-xl-1">
-      <button class="btn btn-primary"
-              >Search
-      </button>
-    </div>
-  </div>
+<nav>
+  <a routerLink="/product">Home</a> |
+  <a routerLink="/Create">Create Master Product</a> |
+  <a routerLink="/Project-Test">Create Master Product</a>
+</nav>
 
 
-    <div class="card">
-      <div class="card-body">
-        <table class="table table-bordered">
-          <thead>
-          <tr>
-            <th class="col-1 text-center align-middle fs--1" scope="col">#</th>
-            <th class="col-2 text-center align-middle fs--1" scope="col">Code</th>
-            <th class="col-5 text-center align-middle fs--1" scope="col">Name</th>
-            <th class="col-2 text-center align-middle fs--1" scope="col">Product Type</th>
-            <th class="col-1 text-center align-middle fs--1" scope="col">Active</th>
-            <th class="col-1 text-center align-middle fs--1" scope="col"></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>
-              <switch name="basicSwitch" [(ngModel)]="value"></switch>
-            </td>
-            <td>
-              <button class="btn btn-warning"
-                      type="button"><i class="las la-bell"></i>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@fat</td>
-            <td>@fat</td>
-          </tr>
 
-          </tbody>
-        </table>
-      </div>
-    </div>
 
-  </div>
-<a routerLink="/Create">Heroes</a>
 
 <router-outlet></router-outlet>

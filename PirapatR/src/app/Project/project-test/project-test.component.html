@@ -1,0 +1,18 @@
+<div class="container-fluidrner">
+  <div class="card">
+    <button (click)="addProductList()">
+      Add More
+    </button>
+  </div>
+  <div class="card row"
+  *ngFor="let item of productList; let i = index;">
+    <div formArrayName="productLists">
+      <div class="col-4">{{item.id}}</div>
+      <div class="col-4">
+        <button (click)="removeList($event)">
+          X
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
