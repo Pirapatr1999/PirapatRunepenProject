@@ -109,10 +109,9 @@
                       <div class="border-2">
 
                         <div class="col col-md-1" style="text-align: end; width: auto;">
-                          <a class="cursor-pointer text-danger"
-                             (click)="removeQcInspection(qcInspectionIdx)">
-                            <i class="feather icon-trash-2"></i>
-                          </a>
+                          <button class="btn btn-danger" (click)="removeQcInspection(qcInspectionIdx)">
+                            Remove
+                          </button>
                         </div>
 
                         <!-- Topic name -->
@@ -149,18 +148,19 @@
                                   <div class="me-2 w-100 g-2" style="width: auto;">
                                     <div class="card justify-content-between">
 
-                                      <div class="justify-content-center"
-                                           style="border: 2px dashed #bebebe;border-radius: 6px;">
+<!--                                      <div class="justify-content-center"-->
+<!--                                           style="border: 2px dashed #bebebe;border-radius: 6px;">-->
 
-                                        <div class="d-flex justify-content-center align-items-end "
-                                             style="height: 150px;">
+<!--                                        <div class="d-flex justify-content-center align-items-end "-->
+<!--                                             style="height: 150px;">-->
 
 
-                                        </div>
-                                      </div>
+<!--                                        </div>-->
+<!--                                      </div>-->
 
                                       <div class="panel-bg-file-image mr-1"
                                            style="height: 150px; width: auto; background-color: white;"removeQcInspection>
+
                                         <div class="col px-2" style="text-align: end;">
                                           <button type="button" class="btn-close" aria-label="Close"
                                                   style="color: slategray"
@@ -176,224 +176,73 @@
                               </div>
                             </div>
                           </div>
+                          <hr>
+                        </div>
+                        <div class="card ">
+                          <div class="card-body ms-5" formArrayName="inspections">
+                            <div class="col-md-4" *ngFor="let itemInspec of getInspection(qcInspectionIdx).controls; let k = index; " [formGroupName]="k">
+
+                              <div class="card card-body">
+                                <div class="col-md-3 d-flex align-items-center" style="width: auto;">
+                                  <div class="me-2 w-100 g-2" style="width: auto;">
+                                    <div class="card justify-content-between">
+
+                                      <div class="panel-bg-file-image mr-1"
+                                           style="height: 150px; width: auto; background-color: white;"removeQcInspection>
+                                        <div class="col px-2" style="text-align: end;">
+                                          <button type="button" class="btn-close" aria-label="Close"
+                                                  style="color: slategray"
+                                                  (click)="removeQcInspectionAttachReference(qcInspectionIdx , 0)">
+                                            <i class="icofont icofont-close-ci  rcled"></i>
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="Inspection">Inspection Topic</label>
+                                  <input class="form-control" type="text" placeholder="Inspection Topic.." id="Inspection"
+                                         formControlName="topic_name">
+                                </div>
+                                <div class="">
+                                  <div class="col-12" style="text-align: start;">
+                                    <div class="btn-group" dropdown style="margin-bottom: 0.5rem;">
+                                      <div class="form-check form-check-inline">
+                                        <input class="form-check-input " type="radio" id="{{k}}"
+                                               value="CHECKBOX" autocomplete="off"
+                                               formControlName="form_type">
+                                        <label class="form-check-label" style="margin-left: 0.3rem;">
+                                          Multiple Choice</label>
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                        <input class="form-check-input " type="radio" id="{{k}}"
+                                               value="RADIO" autocomplete="off"
+                                               formControlName="form_type">
+                                        <label class="form-check-label" style="margin-left: 0.3rem;">
+                                          One Choice</label>
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                        <input class="form-check-input " type="radio" id="{{k}}"
+                                               value="INPUT_TEXT" autocomplete="off"
+                                               formControlName="form_type">
+                                        <label class="form-check-label" style="margin-left: 0.3rem;">
+                                          Short Answer</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+
+                            </div>
+
+                          </div>
+                            <button class="btn btn-primary "
+                                    (click)="addInspection('Create' , qcInspectionIdx , 0)">
+                              Add Inspection
+                            </button>
                         </div>
 
-                        <!--                          <div class="card">-->
-                        <!--                            <div class="card-header bg-primary text-white">-->
-                        <!--                              Inspection Information-->
-                        <!--                            </div>-->
-                        <!--                            <div class="card-body">-->
-                        <!--                              <div id="inspection" formArrayName="inspections">-->
-                        <!--                                <div *ngFor="let value of getInspection(i).controls; let j = index;"-->
-                        <!--                                     [formGroupName]="j"-->
-                        <!--                                     class="rounded" style="margin-bottom: 1rem;">-->
-                        <!--                                  <ul class="timeline" style="" *ngIf="value.get('is_show').value">-->
-                        <!--                                    <li style="">-->
-                        <!--                                      <div class="timeline-icon" style="z-index: 1;">-->
-                        <!--                                        <point>-->
-                        <!--                                          <div class="col" style="">-->
-                        <!--                                            <h4 *ngIf="this.modeAdd"-->
-                        <!--                                                style="color: #29A135; font-size: xx-large; margin-top: 0.4rem;">{{j + 1}}</h4>-->
-                        <!--                                            <h4 *ngIf="!this.modeAdd"-->
-                        <!--                                                style="color: #29A135; font-size: xx-large; margin-top: 0.4rem;">{{value.get('seq').value}}</h4>-->
-                        <!--                                          </div>-->
-                        <!--                                        </point>-->
-                        <!--                                      </div>-->
-                        <!--                                      <div class="timeline-body">-->
-                        <!--                                        <div class="timeline-content">-->
-                        <!--                                          <div class="container mt-2">-->
-                        <!--                                            <div class="row row-cols-md justify-content-between g-2">-->
-                        <!--                                              <div formArrayName="attach_guide_pictures">-->
-                        <!--                                                <div-->
-                        <!--                                                  *ngFor="let picture of getArrayGuidePictures(i, j).controls; let k = index;"-->
-                        <!--                                                  [formGroupName]="k">-->
-                        <!--                                                  <div class="col-12 text-end">-->
-                        <!--                                                    <a class="text-danger" href="javascript:void(0)"-->
-                        <!--                                                       (click)="removeInspection(i, j , k)">-->
-                        <!--                                                      <i class="feather icon-trash-2" style="font-size: 18px"></i>-->
-                        <!--                                                    </a>-->
-                        <!--                                                  </div>-->
-                        <!--                                                  &lt;!&ndash;  -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; Image attach_guide_pictures-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-                        <!--                                                  <div class="col-md-3 d-flex align-items-center" style="width: 370px;">-->
-                        <!--                                                    <div class="me-2 w-100 g-2" style="width: auto;">-->
-                        <!--                                                      <div class="mb-2 " style="text-align: start;">-->
-                        <!--                                                          <span class="fs&#45;&#45;1 fw-lighter mb-2" style="color: red">-->
-                        <!--                                                            <label class="form-label">Image Inspection </label>-->
-                        <!--                                                          </span>-->
-                        <!--                                                      </div>-->
-                        <!--                                                      <div class="card justify-content-between ">-->
-                        <!--                                                        <div class="justify-content-center"-->
-                        <!--                                                             *ngIf="!picture.get('main_file_name').value"-->
-                        <!--                                                             style="border: 2px dashed #bebebe;border-radius: 6px;">-->
-                        <!--                                                          <div class="no-picture-text" style="text-align: center;">-->
-                        <!--                                                              <span class="fas fa-file-image icon-add "-->
-                        <!--                                                                    style="font-size: xxx-large;">-->
-                        <!--                                                                <i class="feather icon-image mt-2"></i>-->
-                        <!--                                                              </span>-->
-                        <!--                                                            No Images-->
-                        <!--                                                          </div>-->
-
-                        <!--                                                          <div class="d-flex justify-content-center align-items-end "-->
-                        <!--                                                               style="height: 215px">-->
-                        <!--                                                            <upload type="file"-->
-                        <!--                                                                    levelType="PRODUCT_QC_INSPECTION"-->
-                        <!--                                                                    class="btn btn-sm btn-info mb-3"-->
-                        <!--                                                                    attackType="PICTURE_MAIN" class="btn btn-info mb-2"-->
-                        <!--                                                                    aria-label="add-on"-->
-                        <!--                                                                    accept="image/png, image/jpeg"-->
-                        <!--                                                                    (success)="setFormUploadPicture($event.response, i, 'PICTURE_MAIN','PRODUCT_QC_INSPECTION' , j , k)">-->
-                        <!--                                                              + Add Images-->
-                        <!--                                                            </upload>-->
-                        <!--                                                          </div>-->
-                        <!--                                                        </div>-->
-                        <!--                                                        <div-->
-                        <!--                                                          class="panel-bg-file-image mr-1  "-->
-                        <!--                                                          style="height: 210px; width: auto; background-color: white;"-->
-                        <!--                                                          *ngIf="picture.get('main_file_name').value"-->
-                        <!--                                                          [ngStyle]="{backgroundImage: 'url(' + picture.get('main_file_url').value + ')'}">-->
-                        <!--                                                          <div class="col px-2" style="text-align: end;">-->
-                        <!--                                                            <button type="button" class="btn-close" aria-label="Close"-->
-                        <!--                                                                    style="color: slategray"-->
-                        <!--                                                                    (click)="removeImage('attach_guide_pictures', i , j , k)">-->
-                        <!--                                                              <i class="icofont icofont-close-ci  rcled"></i>-->
-                        <!--                                                            </button>-->
-                        <!--                                                          </div>-->
-                        <!--                                                        </div>-->
-                        <!--                                                      </div>-->
-                        <!--                                                    </div>-->
-                        <!--                                                  </div>-->
-                        <!--                                                </div>-->
-                        <!--                                              </div>-->
-                        <!--                                              <div class="form-group mb-3 col-12">-->
-                        <!--                                                <label class="form-label">Inspection Topic</label>-->
-                        <!--                                                <div class="input-group">-->
-                        <!--                                                  <input type="text"-->
-                        <!--                                                         class="form-control no-validation-icon no-success-validation"-->
-                        <!--                                                         id="detail" placeholder="Inspection Topic"-->
-                        <!--                                                         autocomplete="off"-->
-                        <!--                                                         formControlName="topic_name"-->
-                        <!--                                                         (change)="checkValueInspection($event, i, j, 0)">-->
-                        <!--                                                </div>-->
-                        <!--                                              </div>-->
-                        <!--                                            </div>-->
-                        <!--                                          </div>-->
-                        <!--                                          <div class="container">-->
-                        <!--                                            <div class="">-->
-                        <!--                                              <div class="col-12" style="text-align: start;">-->
-                        <!--                                                <div class="btn-group" dropdown style="margin-bottom: 0.5rem;">-->
-                        <!--                                                  <div class="form-check form-check-inline"-->
-                        <!--                                                       (click)="dropdownManu('CHECKBOX', i , j ); ">-->
-                        <!--                                                    <input class="form-check-input " type="radio" id="{{j}}"-->
-                        <!--                                                           value="CHECKBOX" autocomplete="off"-->
-                        <!--                                                           formControlName="form_type">-->
-                        <!--                                                    <label class="form-check-label" style="margin-left: 0.3rem;">-->
-                        <!--                                                      Multiple Choice</label>-->
-                        <!--                                                  </div>-->
-                        <!--                                                  <div class="form-check form-check-inline"-->
-                        <!--                                                       (click)="dropdownManu('RADIO', i , j );">-->
-                        <!--                                                    <input class="form-check-input " type="radio" id="{{j}}"-->
-                        <!--                                                           value="RADIO" autocomplete="off"-->
-                        <!--                                                           formControlName="form_type">-->
-                        <!--                                                    <label class="form-check-label" style="margin-left: 0.3rem;">-->
-                        <!--                                                      One Choice</label>-->
-                        <!--                                                  </div>-->
-                        <!--                                                  <div class="form-check form-check-inline"-->
-                        <!--                                                       (click)="dropdownManu('INPUT_TEXT', i , j );">-->
-                        <!--                                                    <input class="form-check-input " type="radio" id="{{j}}"-->
-                        <!--                                                           value="INPUT_TEXT" autocomplete="off"-->
-                        <!--                                                           formControlName="form_type">-->
-                        <!--                                                    <label class="form-check-label" style="margin-left: 0.3rem;">-->
-                        <!--                                                      Short Answer</label>-->
-                        <!--                                                  </div>-->
-                        <!--                                                </div>-->
-                        <!--                                              </div>-->
-                        <!--                                              <div *ngIf="getInspectionType(i , j).value !== 'INPUT_TEXT'">-->
-                        <!--                                                <div class="rounded">-->
-                        <!--                                                  <div class="" formArrayName="choices">-->
-                        <!--                                                    <div class="col-12"-->
-                        <!--                                                         *ngFor="let item of getInspectionChoices(i , j ).controls; let indexChoice = index"-->
-                        <!--                                                         [formGroupName]="indexChoice">-->
-                        <!--                                                      <div>-->
-                        <!--                                                        <div-->
-                        <!--                                                          style="margin-bottom: 0.5rem;">-->
-                        <!--                                                          <div *ngIf="item.get('is_show').value">-->
-                        <!--                                                            <div class="input-group mb-3 ">-->
-                        <!--                                                              <input type="text" *ngIf="!this.modeAdd"-->
-                        <!--                                                                     placeholder="{{'Choice ' + (item.get('seq').value)}}"-->
-                        <!--                                                                     formControlName="detail"-->
-                        <!--                                                                     autocomplete="off"-->
-                        <!--                                                                     class="form-control no-validation-icon no-success-validation"-->
-                        <!--                                                                     (change)="checkValueChoice($event, i , j, indexChoice)">-->
-                        <!--                                                              <input type="text" *ngIf="this.modeAdd"-->
-                        <!--                                                                     placeholder="{{'Choice ' + (indexChoice+1)}}"-->
-                        <!--                                                                     formControlName="detail"-->
-                        <!--                                                                     autocomplete="off"-->
-                        <!--                                                                     class="form-control no-validation-icon no-success-validation"-->
-                        <!--                                                                     (change)="checkValueChoice($event, i , j, indexChoice)">-->
-                        <!--                                                              <button class="btn btn-danger"-->
-                        <!--                                                                      (click)="removeChoices(i , j , indexChoice)">-->
-                        <!--                                                                <i class="feather icon-trash-2"></i>-->
-                        <!--                                                              </button>-->
-                        <!--                                                            </div>-->
-                        <!--                                                          </div>-->
-                        <!--                                                        </div>-->
-                        <!--                                                      </div>-->
-                        <!--                                                    </div>-->
-                        <!--                                                    <div-->
-                        <!--                                                      *ngIf='getInspectionType(i , j).value === "CHECKBOX" || getInspectionType(i , j).value === "RADIO"'>-->
-                        <!--                                                      <div class="row text-center text-primary mb-3 cursor-pointer"-->
-                        <!--                                                           (click)="addChoicesMain('Create', i , j)"-->
-                        <!--                                                           *ngIf="this.modeAdd">-->
-                        <!--                                                        <label class="form-check-labe cursor-pointer">-->
-                        <!--                                                          <i class="la la-plus-circle"></i> Add Choice-->
-                        <!--                                                        </label>-->
-                        <!--                                                      </div>-->
-                        <!--                                                      <div class="row text-center text-primary mb-3 cursor-pointer"-->
-                        <!--                                                           (click)="addChoicesMain('Edit', i , j )"-->
-                        <!--                                                           *ngIf="!this.modeAdd">-->
-                        <!--                                                        <label class="form-check-label cursor-pointer">-->
-                        <!--                                                          <i class="la la-plus-circle"></i> Add Choice-->
-                        <!--                                                        </label>-->
-                        <!--                                                      </div>-->
-                        <!--                                                    </div>-->
-                        <!--                                                  </div>-->
-                        <!--                                                </div>-->
-                        <!--                                              </div>-->
-                        <!--                                            </div>-->
-                        <!--                                          </div>-->
-                        <!--                                        </div>-->
-                        <!--                                      </div>-->
-                        <!--                                    </li>-->
-                        <!--                                  </ul>-->
-                        <!--                                </div>-->
-                        <!--                                <div class="" style="padding-bottom: 0.5rem;">-->
-                        <!--                                  <div class="row">-->
-                        <!--                                    <div class="col-md-1"-->
-                        <!--                                         style=" width:auto;margin-left: 1.22%;text-align: start; z-index: 2;padding: 0;"-->
-                        <!--                                         *ngIf="this.modeAdd">-->
-                        <!--                                      <button class="btn btn-success" (click)="addInspection('Create', i ,0 ,0)"-->
-                        <!--                                              style="border-radius: 2rem 2rem;padding: 0.5rem 0.7rem;">-->
-                        <!--                                        <i class="feather icon-plus  " style=" font-size: 15px;"></i>-->
-                        <!--                                      </button>-->
-                        <!--                                    </div>-->
-                        <!--                                    <div class="col-md-1"-->
-                        <!--                                         style=" width:auto;margin-left: 1.22%;text-align: start; z-index: 2;padding: 0;"-->
-                        <!--                                         *ngIf="!this.modeAdd">-->
-                        <!--                                      <button class="btn btn-success" (click)="addInspection('Edit', i ,0 ,0)"-->
-                        <!--                                              style="border-radius: 2rem 2rem;padding: 0.5rem 0.7rem;">-->
-                        <!--                                        <i class="feather icon-plus  " style=" font-size: 15px;"></i>-->
-                        <!--                                      </button>-->
-                        <!--                                    </div>-->
-
-                        <!--                                    <div class="col-md" style="align-self: center;">-->
-                        <!--                                      <label style="">Add Inspection Information</label>-->
-                        <!--                                    </div>-->
-                        <!--                                  </div>-->
-                        <!--                                </div>-->
-                        <!--                              </div>-->
-                        <!--                            </div>-->
-                        <!--                          </div>-->
-
+                        </div>
                       </div>
                     </div>
                   </accordion-group>

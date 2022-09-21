@@ -48,6 +48,9 @@ export class MasterComponent implements OnInit {
       qc_inspections: this.fb.array([]),
       qc_inspections_for_remove: this.fb.array([]),
     });
+
+    this.addQCInspection('Create');
+    // this.addInspection('Create', 0 , 0);
   }
   // GET
   get modularDrawings(): FormArray {
@@ -65,6 +68,10 @@ export class MasterComponent implements OnInit {
   // get qc-inspections from array
   getQcInspections(): FormArray {
     return this.form.get('qc_inspections') as FormArray;
+  }
+
+  getInspection(qcInspectionIdx: number): FormArray{
+    return this.getQcInspections().at(qcInspectionIdx).get('inspections') as FormArray;
   }
 
   // get qc-inspection attach references from object
@@ -271,9 +278,8 @@ export class MasterComponent implements OnInit {
 
 
   addQCInspection(value: string): void {
-    console.log(this.qcInspections.get('topic_name')?.value);
-    console.log(this.getQcInspections().get('topic_name')?.value);
-
+    console.log(this.getQcInspections().value);
+this.qcInspectionBodyForAddMore()
       if (value === 'Create') {
 
       const PushQC = [];
@@ -356,6 +362,94 @@ export class MasterComponent implements OnInit {
 
 
   }
+
+  addInspection(value: string, indexQC: number, k: number): void {
+    if (value === 'Create') {
+
+      // const PushInspce = [];
+      // this.getInspection(indexQC).controls.forEach((val, index) => {
+      //   if (val.value.is_deleted === 'N') {
+      //     PushInspce.push(val);
+      //   }
+      // });
+      // this.numInspec = PushInspce.length + 1;
+
+      const data = this.fb.group({
+        qc_inspection_id: [''],
+        qc_inspection_detail_id: [''],
+        seq: [1],
+        topic_name: [''],
+        form_type: [''],
+        detail: [''],
+        refer_id: [''],
+        is_created: ['Y'],
+        is_updated: ['N'],
+        is_deleted: ['N'],
+        is_show: true,
+        choices: this.fb.array([]),
+        attach_guide_pictures: this.fb.array([
+          this.fb.group({
+            main_file_name: [''],
+            main_file_url: [''],
+            file_name: [''],
+            detail: [''],
+            refer_id: [''],
+            is_process: [''],
+            is_created: ['Y'],
+            is_updated: ['N'],
+            is_deleted: ['N'],
+            seq: [1]
+          })
+
+        ]),
+      });
+      this.getInspection(indexQC).push(data);
+
+
+    }
+    // else if (value === 'Edit') {
+    //   const PushInspce = [];
+    //   this.getInspection(indexQC).controls.forEach((val, index) => {
+    //     if (val.value.is_deleted === 'N') {
+    //       PushInspce.push(val);
+    //     }
+    //   });
+    //   this.numInspec = PushInspce.length + 1;
+    //
+    //   const dataEdit = this.fb.group({
+    //     qc_inspection_id: [''],
+    //     qc_inspection_detail_id: '',
+    //     seq: [PushInspce.length + 1],
+    //     topic_name: [''],
+    //     form_type: [''],
+    //     detail: [''],
+    //     refer_id: '',
+    //     is_created: ['Y'],
+    //     is_updated: ['N'],
+    //     is_deleted: ['N'],
+    //     is_show: true,
+    //     choices: this.fb.array([]),
+    //     attach_guide_pictures: this.fb.array([
+    //       this.fb.group({
+    //         main_file_name: [''],
+    //         main_file_url: [''],
+    //         file_name: [''],
+    //         detail: [''],
+    //         refer_id: '',
+    //         is_created: ['Y'],
+    //         is_updated: ['N'],
+    //         is_deleted: ['N'],
+    //         is_show: true,
+    //         seq: [1],
+    //       })
+    //
+    //     ]),
+    //   });
+    //   this.getInspection(indexQC).push(dataEdit);
+    // }
+
+  }
+
 
   addQcInspectionToFormGroup(qcInspection: QcInspection): void {
 

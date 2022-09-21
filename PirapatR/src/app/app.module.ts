@@ -14,6 +14,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CollapseModule} from 'ngx-bootstrap/collapse';
 import { ProjectTestComponent } from './Project/project-test/project-test.component';
+import { ProjectAllComponent } from './project-all/project-all.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ProjectTestComponent } from './Project/project-test/project-test.compon
     MasterComponent,
     UploadComponent,
     ProjectTestComponent,
+    ProjectAllComponent,
   ],
   imports: [
     CollapseModule,
