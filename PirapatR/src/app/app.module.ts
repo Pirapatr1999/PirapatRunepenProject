@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CollapseModule} from 'ngx-bootstrap/collapse';
 import { ProjectTestComponent } from './Project/project-test/project-test.component';
 import { ProjectAllComponent } from './project-all/project-all.component';
+import {ProjectAComponent} from "./project-all/project-a/project-a.component";
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ProjectAllComponent } from './project-all/project-all.component';
     UploadComponent,
     ProjectTestComponent,
     ProjectAllComponent,
+    ProjectAComponent,
   ],
   imports: [
     CollapseModule,

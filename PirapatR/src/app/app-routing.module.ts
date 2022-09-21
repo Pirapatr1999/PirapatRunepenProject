@@ -4,6 +4,7 @@ import {ProductComponent} from "./product/product.component";
 import {MasterComponent} from "./master/master.component";
 import {ProjectTestComponent} from "./Project/project-test/project-test.component";
 import {ProjectAllComponent} from "./project-all/project-all.component";
+import {ProjectAComponent} from "./project-all/project-a/project-a.component";
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'edit/:productid', component: MasterComponent },
   { path: 'Project-Test', component: ProjectTestComponent },
   { path: 'ProjectAll', component: ProjectAllComponent },
+  { path: 'ProjectAll/Project-A', component: ProjectAComponent },
 ];
 
 @NgModule({
