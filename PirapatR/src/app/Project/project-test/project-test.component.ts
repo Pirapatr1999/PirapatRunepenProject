@@ -11,18 +11,13 @@ import {BsModalService} from "ngx-bootstrap/modal";
   styleUrls: ['./project-test.component.scss']
 })
 export class ProjectTestComponent implements OnInit {
-  data: any;
   productList = [
-    {id: '1', name: 'A'},
-    {id: '2', name: 'B'},
-    {id: '3', name: 'C'},
-    {id: '4', name: 'D'},
-    {id: '5', name: 'E'},
-    {id: '6', name: 'F'},
-    {id: '7', name: 'G'},
-  ]
-  productListOjb = {
-    id: '1', name: 'A'
+    "Pirapat", "Save", "Runepen"
+  ];
+  productListOjb: {
+    id: string,
+    name: string,
+    lastname: string
   };
 
   constructor(private fb: FormBuilder,
@@ -33,22 +28,28 @@ export class ProjectTestComponent implements OnInit {
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.productListOjb = {
+      id: "1",
+      name: "Pirapat",
+      lastname: "Runepen"
+    }
   }
 
-  removeList(event: any): void{
+  removeList(item: any): void{
     this.productList.forEach((resPL, idxPL) => {
-      this.productList.splice(idxPL);
+      if (resPL == item){
+        this.productList.splice(idxPL, 1);
+
+      }
       console.log(resPL);
     })
-    console.log(event);
+    console.log(item);
 
   }
 
-  addProductList(): void{
-    const data = this.fb.group({
-      id: 'New ID', name: 'New Name' ,
-    })
-    // @ts-ignore
-    this.productList.unshift(data)
+  addProduct(item: any): void{
+    this.productList.unshift(item);
+
   }
 }
+//

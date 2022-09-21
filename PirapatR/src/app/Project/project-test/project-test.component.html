@@ -1,18 +1,56 @@
-<div class="container-fluidrner">
+<div class="container">
   <div class="card">
-    <button (click)="addProductList()">
-      Add More
-    </button>
+    <!--    <button (click)="addProductList()">-->
+    <!--      Add More-->
+    <!--    </button>-->
   </div>
-  <div class="card row"
-  *ngFor="let item of productList; let i = index;">
-    <div formArrayName="productLists">
-      <div class="col-4">{{item.id}}</div>
-      <div class="col-4">
-        <button (click)="removeList($event)">
-          X
-        </button>
+  <br>
+  <div class="card-body">
+    <h6>{{productListOjb.id}}</h6>
+    <h6>{{productListOjb.name}}</h6>
+    <h6>{{productListOjb.lastname}}</h6>
+  </div>
+  <br>
+  <form (submit)="addProduct(item.value)">
+    <div>
+      <label class="me-3" for="products">Product:</label>
+      <input type="text" #item id="products">
+    </div>
+  </form>
+  <br>
+
+  <div class="card row">
+    <div *ngFor="let item of productList; let i = index;">
+      <div class=" row sm justify-content-between mt-2 mb-2" >
+        <div class="col-4 ">{{item}}</div>
+        <div class="col-1 text-end">
+          <button (click)="removeList(item)">
+            X
+          </button>
+        </div>
       </div>
+
     </div>
   </div>
+  <br>
+  <div class="card card-body row">
+    <h3>Edit</h3>
+    <form>
+      <div class="g-3">
+        <div class="mb-2">
+          <label class="me-3" for="names">Name: </label>
+          <input type="text" [(ngModel)]="productListOjb.name" id="names"
+                 [ngModelOptions]="{standalone: true}">
+        </div>
+        <div>
+          <label class="me-3" for="lastname">Last Name: </label>
+          <input type="text" [(ngModel)]="productListOjb.lastname" id="lastname"
+                 [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+
+
+    </form>
+  </div>
 </div>
+<!---->
