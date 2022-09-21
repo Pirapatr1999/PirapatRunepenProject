@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: 'Create', component: MasterComponent },
   { path: 'edit/:productid', component: MasterComponent },
-  { path: 'Project-Test', component: ProjectTestComponent },
+  { path: 'ProjectAll/Project-Test', component: ProjectTestComponent },
   { path: 'ProjectAll', component: ProjectAllComponent },
   { path: 'ProjectAll/Project-A', component: ProjectAComponent },
 ];
