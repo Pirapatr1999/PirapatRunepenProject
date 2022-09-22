@@ -16,6 +16,7 @@ import {CollapseModule} from 'ngx-bootstrap/collapse';
 import { ProjectTestComponent } from './Project/project-test/project-test.component';
 import { ProjectAllComponent } from './project-all/project-all.component';
 import {ProjectAComponent} from "./project-all/project-a/project-a.component";
+import {AlertModule} from "ngx-bootstrap/alert";
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {ProjectAComponent} from "./project-all/project-a/project-a.component";
     BrowserAnimationsModule,
     AccordionModule,
     ModalModule.forRoot(),
+    AlertModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     TooltipModule.forRoot(),
