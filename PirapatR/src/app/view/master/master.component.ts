@@ -3,7 +3,7 @@ import {FormGroup, FormBuilder, FormControl, Validators, FormArray, AbstractCont
 import {ActivatedRoute, Router} from '@angular/router';
 import {DomSanitizer} from "@angular/platform-browser";
 import {BsModalService} from "ngx-bootstrap/modal";
-import {AttachFile, Inspection, QcInspection} from "../interfaces";
+import {AttachFile, Inspection, QcInspection} from "../../interfaces";
 @Component({
   selector: 'app-master',
   templateUrl: './master.component.html',

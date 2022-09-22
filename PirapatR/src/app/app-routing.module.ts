@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {ProductComponent} from "./product/product.component";
-import {MasterComponent} from "./master/master.component";
-import {ProjectTestComponent} from "./Project/project-test/project-test.component";
-import {ProjectAllComponent} from "./project-all/project-all.component";
-import {ProjectAComponent} from "./project-all/project-a/project-a.component";
+import {ProductComponent} from "./view/product/product.component";
+import {MasterComponent} from "./view/master/master.component";
+import {ProjectTestComponent} from "./view/Project/project-test/project-test.component";
+import {ProjectAllComponent} from "./view/project-all/project-all.component";
+import {ProjectAComponent} from "./view/project-all/project-a/project-a.component";
 
 
 const routes: Routes = [
