@@ -17,7 +17,15 @@ import { ProjectTestComponent } from './Project/project-test/project-test.compon
 import { ProjectAllComponent } from './project-all/project-all.component';
 import {ProjectAComponent} from "./project-all/project-a/project-a.component";
 import {AlertModule} from "ngx-bootstrap/alert";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FeatherModule } from 'angular-feather';
+import {Camera, Github, Heart} from "angular-feather/icons";
 
+const icons = {
+  Camera,
+  Heart,
+  Github
+};
 
 @NgModule({
   declarations: [
@@ -30,7 +38,9 @@ import {AlertModule} from "ngx-bootstrap/alert";
     ProjectAComponent,
   ],
   imports: [
+    FeatherModule.pick(icons),
     CollapseModule,
+    FontAwesomeModule,
     BrowserAnimationsModule,
     AccordionModule,
     ModalModule.forRoot(),
@@ -44,6 +54,9 @@ import {AlertModule} from "ngx-bootstrap/alert";
     ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    FeatherModule
+  ]
 })
 export class AppModule { }
